@@ -1,11 +1,32 @@
-" local prefix for buffer special mappings : using this instead of global <leader>
+" global prefix for all custom mappings
+let mapleader = "-"
+
+" local prefix for buffer special mappings
 let maplocalleader = "-"
 
 " open ~/.vimrc file to edit
-nnoremap <localleader>ev :vsplit $MYVIMRC<cr>
-
-" automatically source ~/.vimrc when you are done with editing
+" and automatically source ~/.vimrc when you are done with editing
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 autocmd BufWritePost $MYVIMRC :source $MYVIMRC
+
+" Editor layout {{{
+set termencoding=utf-8
+set encoding=utf-8
+" }}}
+
+" active title and set vim-title to current file's name and absolute path
+set title
+set titlestring="%:p"
+
+" no more swap or bak files
+set noswapfile
+set nobackup
+
+" enable filetype detection, plugins and indent
+filetype plugin indent on
+
+" easily yank to the end of the line
+nnoremap <localleader>y y$
 
 " Handle Comments for different filetypes
 "
