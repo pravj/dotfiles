@@ -28,6 +28,16 @@ filetype plugin indent on
 " easily yank to the end of the line
 nnoremap <localleader>y y$
 
+" allow backspace over everything in insert mode
+set backspace=indent,eol,start
+
+" tells Vim to create <FILENAME>.un~ file : to contain undo info, so you can
+" undo even after you close and reopen a file. 
+set undofile
+
+" Highlights the current cursor line
+set cursorline
+
 " Handle Comments for different filetypes
 "
 " Single line : comment current line (normal mode)
