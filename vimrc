@@ -1,11 +1,8 @@
-" global prefix for all custom mappings
-let mapleader = "-"
-
-" local prefix for buffer special mappings
+" local prefix for buffer special mappings : using this instead of global <leader>
 let maplocalleader = "-"
 
 " open ~/.vimrc file to edit
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <localleader>ev :vsplit $MYVIMRC<cr>
 
 " automatically source ~/.vimrc when you are done with editing
 autocmd BufWritePost $MYVIMRC :source $MYVIMRC
