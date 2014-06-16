@@ -22,6 +22,12 @@ set titlestring="%:p"
 set noswapfile
 set nobackup
 
+" pathogen support
+execute pathogen#infect()
+
+" enable syntax
+syntax on
+
 " enable filetype detection, plugins and indent
 filetype plugin indent on
 
@@ -31,12 +37,11 @@ nnoremap <localleader>y y$
 " allow backspace over everything in insert mode
 set backspace=indent,eol,start
 
-" tells Vim to create <FILENAME>.un~ file : to contain undo info, so you can
-" undo even after you close and reopen a file. 
-set undofile
-
-" Highlights the current cursor line
-set cursorline
+" you accidently press <F1> instead of <ESC>
+" and there will be some disturbance, want this : obvi NO
+" mapped in visual and insert mode : maybe you want <F1> in normal
+inoremap <f1> <esc>
+vnoremap <f1> <esc>  
 
 " Handle Comments for different filetypes
 "
