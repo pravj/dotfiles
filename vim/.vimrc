@@ -61,3 +61,13 @@ augroup multiline_comment
     autocmd FileType coffee nnoremap <buffer> <localleader>cm `<O###<esc>`>o###
     autocmd FileType ruby nnoremap <buffer> <localleader>cm `<O=begin<esc>`>o=end
 augroup END
+
+" Show highlighting groups for current word
+" function from vimcasts.org
+nmap <c-s-p> :call <SID>SynStack()<cr>
+function! <SID>SynStack()
+	if !exists("*synstack")
+		return
+	endif
+	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
