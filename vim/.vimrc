@@ -1,47 +1,45 @@
-" global prefix for all custom mappings
-let mapleader = "-"
+" here we go \m/
+set nocompatible
 
-" local prefix for buffer special mappings
-let maplocalleader = "-"
+" global prefix for all custom mappings
+let mapleader = ","
 
 " open ~/.vimrc file to edit
 " and automatically source ~/.vimrc when you are done with editing
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 autocmd BufWritePost $MYVIMRC :source $MYVIMRC
 
-" Editor layout {{{
+
+"""""""""""""""""""""""""""""""""""""""""
+" Pathogen support and different addons "
+"""""""""""""""""""""""""""""""""""""""""
+execute pathogen#infect()
+
+" enable syntax, filetype detection, plugins and indent
+syntax on
+filetype plugin indent on
+
+
+"""""""""""""""""
+" Editor layout "
+"""""""""""""""""
 set termencoding=utf-8
 set encoding=utf-8
-" }}}
 
-" active title and set vim-title to current file's name and absolute path
+" vim-title shows current file's name and absolute path
 set title
 set titlestring="%:p"
 
-" no more swap or bak files
-set noswapfile
-set nobackup
 
-" pathogen support
-execute pathogen#infect()
+"""""""""""""""""""
+" Editing related "
+"""""""""""""""""""
 
-" enable syntax
-syntax on
-
-" enable filetype detection, plugins and indent
-filetype plugin indent on
-
-" easily yank to the end of the line
-nnoremap <localleader>y y$
+" line number improve your confidence
+set number
 
 " allow backspace over everything in insert mode
 set backspace=indent,eol,start
-
-" you accidently press <F1> instead of <ESC>
-" and there will be some disturbance, want this : obvi NO
-" mapped in visual and insert mode : maybe you want <F1> in normal
-inoremap <f1> <esc>
-vnoremap <f1> <esc>  
 
 " Handle Comments for different filetypes
 "
@@ -62,8 +60,19 @@ augroup multiline_comment
     autocmd FileType ruby nnoremap <buffer> <localleader>cm `<O=begin<esc>`>o=end
 augroup END
 
-" Show highlighting groups for current word
-" function from vimcasts.org
+
+"""""""""""""""""""""""""""""
+" no more swap or bak files "
+"""""""""""""""""""""""""""""
+set noswapfile
+set nobackup
+
+
+""""""""""""""""""""
+" Helper functions "
+""""""""""""""""""""
+
+" Show highlighting groups for current word : function from vimcast.org
 nmap <c-s-p> :call <SID>SynStack()<cr>
 function! <SID>SynStack()
 	if !exists("*synstack")
@@ -71,3 +80,17 @@ function! <SID>SynStack()
 	endif
 	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
+
+
+"""""""""""""""""""
+" Custom mappings "
+"""""""""""""""""""
+
+" easily yank to the end of the line
+nnoremap <localleader>y y$
+
+" you accidently press <F1> instead of <ESC>
+" and there will be some disturbance, want this : obvi NO
+" mapped in visual and insert mode : bcz maybe you want <F1> in normal
+inoremap <f1> <esc>
+vnoremap <f1> <esc>  
