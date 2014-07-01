@@ -69,6 +69,8 @@ $ dotfiles/bash
 
 
 * I want to try a `bash_prompt` or `shell : status-line` like thing
-> there are many similar in market but It's a cool feeling in using your own thing
+
+> there are many similar in market but [It's a different feeling in using your own thing](https://github.com/captn3m0/captn3m0.github.com/blob/master/_posts/2012-12-27-sdslabs-personal-blog-post.md#recruitments)
+  * (read paragraph 3, line 3 of the ^ link or read entire blog :grinning:)
 
 * So I have put a `.md` file in a chemical solution and now waiting to see it changed in `.sh` or something.
