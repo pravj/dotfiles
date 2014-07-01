@@ -33,6 +33,16 @@ $ dotfiles/vim
 * general mappings required to make your editing cool.
 
 ```ruby
+$ dotfiles/bin
+```
+```ruby
+.
+|__gitio
+```
+* gitio
+  * command line client to shorten github URL's using `Git.io` (a Ruby script)
+
+```ruby
 $ dotfiles/ruby
 ```
 
