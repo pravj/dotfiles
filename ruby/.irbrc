@@ -1,11 +1,12 @@
-#IRB.conf[:PROMPT_MODE] = :SIMPLE
-
+# work like 'clear' terminal command
 def clear
     system('clear')
 end
 
+# quit irb session
 alias q exit
 
+# colors used in IRB console
 ANSI = {}
 ANSI[:RESET]     = "\e[0m"
 ANSI[:BOLD]      = "\e[1m"
