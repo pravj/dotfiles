@@ -1,0 +1,71 @@
+#!/usr/bin/env ruby
+
+# CLI for Git.io URL Shortner
+# Pravendra Singh : @hackpravj
+
+require 'net/http'
+require 'uri'
+
+module Gitio
+
+  # Git.io URL
+  URL = 'http://git.io'
+
+  class Logger
+    def self.log(message)
+      puts message
+    end
+  end
+
+  class Help
+    def self.message
+      puts %Q{
+      Gitio : Github URLs Shortner CLI
+      --------------------------------
+      gitio -h | --help : for this Help Message\n
+      Arguments :
+      >> URL (to Shorten)
+      >> Code (Custom short URL) {optional}\n
+      Ex.\n
+      $ gitio https://github.com/pravj pravj
+      generated short URL is http://git.io/pravj
+      }
+    end
+  end
+
+  extend self
+
+  def Shorten(url, code = nil)
+    uri = URI.parse(Gitio::URL)
+    http = Net::HTTP.new(uri.host, uri.port)
+    req = Net::HTTP::Post.new(uri.request_uri)
+
+    # fill form data according to arguments
+    form_data = {"url" => url}
+    form_data[:code] = code if code != nil
+
+    req.set_form_data(form_data)
+    res = http.request(req)
+
+    Logger.log(res['status'])
+    Logger.log(res['Location'])
+  end
+
+end
+
+if ARGV.length <= 0
+  Gitio::Logger.log('please provide a URL to shorten')
+else
+  if (ARGV[0] == '-h' || ARGV[0] == '--help')
+    Gitio::Help.message()
+    exit
+  end
+
+  # url to shorten
+  url = ARGV[0]
+
+  # custom url
+  ARGV.length > 1 ? code = ARGV[1] : nil
+
+  Gitio.Shorten(url, code)
+end
