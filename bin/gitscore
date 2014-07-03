@@ -1,0 +1,76 @@
+#!/usr/bin/env python
+
+"""
+>> Command line Client for gitscore (http://gitscore.com)
+>> ------------------------------------------------------
+>>
+>> Pravendra Singh : https://pravj.github.io
+>> @hackpravj : hackpravj@gmail.com
+"""
+
+try:
+    import argparse
+except ImportError, e:
+    print e
+
+try:
+    import requests
+except ImportError, e:
+    print e
+
+# default username for which gitscore will work without --user argument
+# edit this with your username as a default
+__USER__ = 'pravj'
+
+# Dict object containing color code value for general colors
+# values are already of type 'str' to avoid concatenation errors
+colors = {'red': '31', 'green': '32', 'yellow': '33', 'cyan': '36'}
+
+# formats text : use ANSI Escape Sequence to color them
+def format(text, color, style=None):
+    if style == 'bold':
+      return '\033[' + colors.get(color) + 'm'+ '\033[1m' + str(text) + '\033[0m'
+    else:
+      return '\033[' + colors.get(color) + 'm' + str(text) + '\033[0m'
+
+# returns default --user argument value
+def user():
+    if __USER__:
+	return __USER__
+    else:
+	return None
+
+# collects the calculated gitscore data from http://gitscore.com
+def calculate(user):
+    req = requests.get('http://gitscore.com/user/' + user + '/calculate')
+    return req.json(), req.status_code
+
+# output the gitscore result for a user
+def gitscore(user):
+    data, status = calculate(user)
+
+    if status == 200:
+	if data.get('error'):
+	    # using 'get' method in 'Dict' : to aviod error in direct retrieve
+	    print format(data['error'], 'red', 'bold')
+	else:
+	    print '%s\'s Gitscore : %s' % (format(data['user']['username'],
+		    'yellow', 'bold'), format(data['scores']['total'], 'green'))
+	    print 'Rank : %s out of %s' % (format(data['position'], 'green'),
+		    format(data['totalScores'], 'cyan'))
+	    print '%s : %s' % (format('Reputation', 'cyan'),
+		    format(data['scores']['user'], 'green'))
+	    print '%s : %s' % (format('Contribution', 'cyan'),
+		    format(data['scores']['repo'], 'green'))
+	    print '%s : %s' % (format('Gist', 'cyan'),
+		    format(data['scores']['gist'], 'green'))
+
+parser = argparse.ArgumentParser(description='Command line Client :\
+	gitscore (http://gitscore.com)')
+parser.add_argument('--user', dest='user', type=str, default=user(),
+	help='gitscore for a user (GitHub username)')
+
+args = vars(parser.parse_args())
+
+if args['user']:
+    gitscore(args['user'])
