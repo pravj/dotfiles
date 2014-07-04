@@ -5,6 +5,70 @@ dotfiles
 
 > Because things are really cool in this world.
 
+## Ingredients
+
+- [bash](#bash)
+- [bin](#bin)
+- [git](#git)
+- [ruby](#ruby)
+- [vim](#vim)
+
+
+# bash
+
+```ruby
+$ dotfiles/bash
+```
+
+```
+.
+|__.bashrc
+```
+
+* useful `bash` aliases and configurations
+
+# bin
+
+```ruby
+$ dotfiles/bin
+```
+```ruby
+.
+|__gitio
+```
+* gitio
+  * command line client to shorten github URL's using `Git.io` (a Ruby script)
+* gitscore
+  * command line client for [gitscore](http://gitscore.com) (a Python script)
+
+# git
+
+```ruby
+$ dotfiles/git
+```
+
+```ruby
+.
+|__.gitconfig
+```
+* global git configurations with UI layout and useful aliases.
+
+# ruby
+
+```ruby
+$ dotfiles/ruby
+```
+
+```ruby
+.
+|__.gemrc
+|__.irbrc
+```
+* global gemfile configurations
+* customized IRB console
+
+# vim
+
 ```ruby
 $ dotfiles/vim
 ```
@@ -26,56 +90,12 @@ $ dotfiles/vim
 |__.vimrc
 ```
 
-> some of the things that are inside :
-
-* manage your work according to `Python's pep8` and `Ruby's global style guide`.
+* manage your work according to `Python's pep8` and `Ruby's global` style guide.
 * mappings to quickly comment single or multiple lines according to programming languages
 * general mappings required to make your editing cool.
 
-```ruby
-$ dotfiles/bin
-```
-```ruby
-.
-|__gitio
-```
-* gitio
-  * command line client to shorten github URL's using `Git.io` (a Ruby script)
 
-```ruby
-$ dotfiles/ruby
-```
-
-```ruby
-.
-|__.gemrc
-|__.irbrc
-```
-* global gemfile configurations
-* customized IRB console
-
-```ruby
-$ dotfiles/git
-```
-
-```ruby
-.
-|__.gitconfig
-```
-* global git configurations with UI layout and useful aliases.
-
-```ruby
-$ dotfiles/bash
-```
-
-```
-.
-|__.bashrc
-```
-
-* useful `bash` aliases and configurations
-
-### walk slowly : work in progress :
+## walk slowly : work in progress :
 
 
 * I want to try a `bash_prompt` or `shell : status-line` like thing
