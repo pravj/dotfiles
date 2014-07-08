@@ -1,6 +1,6 @@
 dotfiles
 ========
-![pravj-terminal](http://drp.io/8O)
+![pravj-terminal](../docs/terminal.png)
 
 ## Ingredients
 
