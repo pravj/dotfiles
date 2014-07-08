@@ -1,4 +1,20 @@
 #!/usr/bin/env bash
 
-pwd=$(pwd)
-find $pwd -print | sed -e "s;$pwd;\.;g;s;[^/]*\/;|__;g;s;__|; |;g"
+#
+# treegen : generate tree like directory structure for a path
+# Pravendra Singh : https://pravj.github.io
+#
+
+case $# in
+  0) dir=$(pwd) ;;
+  *) dir=$1 ;;
+esac
+
+if [[ -d $dir ]]; then
+  # absolute path from a relative path
+  dir=$(readlink -f $dir)
+
+  find $dir -print | sed -e "s;$dir;\.;g;s;[^/]*\/;|__;g;s;__|; |;g"
+else
+  echo "no such path : $dir"
+fi
