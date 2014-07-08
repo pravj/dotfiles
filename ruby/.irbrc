@@ -6,6 +6,11 @@ end
 # quit irb session
 alias q exit
 
+IRB.conf[:SAVE_HISTORY] = 1000
+IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
+
+IRB.conf[:AUTO_INDENT] = true
+
 # colors used in IRB console
 ANSI = {}
 ANSI[:RESET]     = "\e[0m"

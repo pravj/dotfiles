@@ -1,9 +1,6 @@
 dotfiles
 ========
-
-> [$ pravj @ ~/projects >> Ystillalive](https://github.com/pravj/dotfiles/commit/5c2a848a581643f95d8031142a39ff1d56165b2c) 
-
-> Because things are really cool in this world.
+![pravj-terminal](http://drp.io/8O)
 
 ## Ingredients
 

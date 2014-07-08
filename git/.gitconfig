@@ -12,6 +12,9 @@
 	# List contributors(emails also) with number of commits : Yo @abhshkdz
 	graf = shortlog -sne
 
+	# undo recent commit, don't kill the changes
+	undo = reset --soft HEAD^
+
 	# Current working tree status
 	#
 	# short format
