@@ -1,6 +1,6 @@
 dotfiles
 ========
-![pravj-terminal](../docs/terminal.png)
+![pravj-terminal](https://raw.githubusercontent.com/pravj/dotfiles/learning/docs/terminal.png)
 
 ## Ingredients
 
