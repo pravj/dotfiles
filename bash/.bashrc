@@ -125,6 +125,12 @@ function cdmd(){
 	cd $1;
 }
 
+# fix PEP8 violations using autopep8
+function pep8fix(){
+	autopep8 $1 > "temp_".$1
+	mv "temp_".$1 $1
+}
+
 # remove a direcotory
 alias drm='sudo rm -r'
 
