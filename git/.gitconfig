@@ -6,14 +6,21 @@
 	helper = cache
 
 [alias]
-	# view latest 10 commit's history graph with commit message and hash
-	l = log --pretty=oneline -n 10 --graph --abbrev-commit
-	
 	# List contributors(emails also) with number of commits : Yo @abhshkdz
 	graf = shortlog -sne
 
 	# undo recent commit, don't kill the changes
 	undo = reset --soft HEAD^
+
+	# Fetch a GitHub pull request (branch) in local git repository
+	#
+	# git fetch-pull-request <PR-NUMBER> <LOCAL-PR-BRANCH-NAME> [REMOTE]
+	# >> 2 update-url => fetch the 2nd pull request into the branch update-url
+	# >> 2 update-url dev => fetch the 2nd pull request into the branch update-url from the remote "dev"
+	fetch-pull-request = "!f() { git fetch ${3:-origin} pull/$1/head:$2; }; f"
+
+	# view latest 10 commit's history graph with commit message and hash
+	l = log --pretty=oneline -n 10 --graph --abbrev-commit
 
 	# Current working tree status
 	#
